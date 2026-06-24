@@ -1,0 +1,20 @@
+[project]
+name = "auto-api"
+version = "0.1.0"
+description = "Extract Python API docstrings into AI-agent-ready Markdown."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+auto-api = "auto_api.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "snapatac2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
