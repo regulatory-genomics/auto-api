@@ -19,7 +19,7 @@ def test_renders_successful_doc():
 
     assert "# JSON APIs" in markdown
     assert "## API reference" in markdown
-    assert "- json.dumps — Serialize obj." in markdown
+    assert "- json.dumps: Serialize obj." in markdown
     assert "## json.dumps" in markdown
     assert '<a id="json.dumps"></a>' in markdown
     assert "Source module: `json`" in markdown
@@ -42,7 +42,7 @@ def test_renders_unresolved_doc():
     )
 
     assert "## API reference" in markdown
-    assert "- missing — Unresolved: Could not resolve missing." in markdown
+    assert "- missing: Unresolved: Could not resolve missing." in markdown
     assert "## missing" in markdown
     assert "Status: unresolved" in markdown
     assert "Could not resolve missing." in markdown
@@ -65,7 +65,7 @@ def test_api_reference_only_mode_omits_body():
     )
 
     assert "## API reference" in markdown
-    assert "- json.dumps — Serialize obj." in markdown
+    assert "- json.dumps: Serialize obj." in markdown
     assert "## json.dumps" not in markdown
     assert "Source module" not in markdown
 
@@ -84,7 +84,7 @@ def test_description_uses_first_paragraph_of_docstring():
         ]
     )
 
-    assert "- json.dumps — Serialize obj." in markdown
+    assert "- json.dumps: Serialize obj." in markdown
 
 
 def test_duplicate_anchors_get_disambiguated():
@@ -109,5 +109,5 @@ def test_duplicate_anchors_get_disambiguated():
         ]
     )
 
-    assert "- pkg.a — First." in markdown
-    assert "- pkg.A — Second." in markdown
+    assert "- pkg.a: First." in markdown
+    assert "- pkg.A: Second." in markdown

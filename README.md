@@ -35,8 +35,8 @@ Output structure (body on):
 
 ## API reference
 
-- json.dumps — Serialize ``obj`` to a JSON formatted ``str``.
-- json.loads — Deserialize ``s`` (a ``str``, ``bytes`` or ``bytearray`` instance containing a JSON document) to a Python object.
+- json.dumps: Serialize ``obj`` to a JSON formatted ``str``.
+- json.loads: Deserialize ``s`` (a ``str``, ``bytes`` or ``bytearray`` instance containing a JSON document) to a Python object.
 
 ## json.dumps
 
