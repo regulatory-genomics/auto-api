@@ -32,13 +32,18 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     extract.add_argument("--output", help="Optional Markdown output path. Prints to stdout if omitted.")
     extract.add_argument("--title", default="API Documentation", help="Markdown document title.")
+    extract.add_argument(
+        "--no-body",
+        action="store_true",
+        help="Skip per-entry body sections; only emit the API reference list.",
+    )
     extract.add_argument("--fail-on-error", action="store_true", help="Exit non-zero if any API cannot be resolved.")
     return parser
 
 
 def _run_extract(args: argparse.Namespace) -> int:
     docs = extract_api_docs(args.target, args.functions)
-    markdown = render_markdown(docs, title=args.title)
+    markdown = render_markdown(docs, title=args.title, include_body=not args.no_body)
 
     if args.output:
         Path(args.output).write_text(markdown, encoding="utf-8")

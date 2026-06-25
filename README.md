@@ -28,6 +28,39 @@ Print Markdown to stdout by omitting `--output`:
 uv run auto-api extract --target json --functions dumps loads
 ```
 
+Output structure (body on):
+
+```md
+# API Documentation
+
+## API reference
+
+- [json.dumps](#jsondumps) — Serialize ``obj`` to a JSON formatted ``str``.
+- [json.loads](#jsonloads) — Deserialize ``s`` (a ``str``, ``bytes`` or ``bytearray`` instance containing a JSON document) to a Python object.
+
+## json.dumps
+
+Source module: `json`
+
+Signature:
+
+```python
+json.dumps(obj, *, skipkeys=False, ...)
+```
+
+Docstring:
+
+```text
+Serialize ``obj`` to a JSON formatted ``str``.
+```
+```
+
+Emit only the API reference (no per-entry body) with `--no-body`:
+
+```bash
+uv run auto-api extract --target json --no-body
+```
+
 Extract all public functions exposed by a target module:
 
 ```bash

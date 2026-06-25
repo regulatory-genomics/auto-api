@@ -18,4 +18,5 @@ class ApiDoc:
     module: str | None
     signature: str | None
     docstring: str | None
+    description: str | None = None
     error: str | None = None
