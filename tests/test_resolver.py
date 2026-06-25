@@ -43,6 +43,42 @@ def test_resolves_exposed_functions_from_local_path():
     resolved = resolve_exposed_apis("tests/fixtures")
     names = {api.qualified_name for api in resolved}
 
-    assert "sample_lib.documented_function" in names
-    assert "sample_lib.undocumented_function" in names
-    assert "sample_lib._private_function" not in names
+    assert "fixtures.sample_lib.documented_function" in names
+    assert "fixtures.sample_lib.undocumented_function" in names
+    assert "fixtures.sample_lib._private_function" not in names
+
+
+def test_resolves_exposed_submodules_from_local_path():
+    resolved = resolve_exposed_apis("tests/fixtures/sample_pkg")
+    names = {api.qualified_name for api in resolved}
+
+    assert "sample_pkg.helpers.helper_function" in names
+    assert "sample_pkg.nested.deep.deep_function" in names
+    assert "sample_pkg._internal.internal_function" not in names
+
+
+def test_include_private_submodules_flag_includes_private():
+    resolved = resolve_exposed_apis(
+        "tests/fixtures/sample_pkg",
+        include_private_submodules=True,
+    )
+    names = {api.qualified_name for api in resolved}
+
+    assert "sample_pkg._internal.internal_function" in names
+
+
+def test_dedupe_when_name_appears_in_submodule_and_reexport():
+    from tests.fixtures import sample_pkg
+    from tests.fixtures.sample_pkg import helpers
+
+    sample_pkg.helper_function = helpers.helper_function
+    try:
+        resolved = resolve_exposed_apis("tests/fixtures/sample_pkg")
+        helper_entries = [
+            api
+            for api in resolved
+            if api.qualified_name.endswith(".helper_function")
+        ]
+        assert len(helper_entries) == 1
+    finally:
+        del sample_pkg.helper_function

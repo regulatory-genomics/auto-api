@@ -3,10 +3,78 @@
 ## API reference
 
 - [snapatac2.concat](#snapatac2.concat) — Concatenates AnnData objects.
+- [snapatac2.datasets.Meuleman_2020](#snapatac2.datasets.meuleman_2020) — A list of transcription factor motifs curated from [Meuleman20]_.
+- [snapatac2.datasets.cis_bp](#snapatac2.datasets.cis_bp) — A list of transcription factor motifs curated by the CIS-BP database.
+- [snapatac2.datasets.colon](#snapatac2.datasets.colon) — scATAC-seq datasets of five colon transverse samples from [Zhang21]_.
+- [snapatac2.datasets.cre_HEA](#snapatac2.datasets.cre_hea) — Curated cis-regulatory elements from [Zhang21]_.
+- [snapatac2.datasets.pbmc10k_multiome](#snapatac2.datasets.pbmc10k_multiome) — Single-cell multiome dataset of 10k PBMCs from 10x Genomics.
+- [snapatac2.datasets.pbmc500](#snapatac2.datasets.pbmc500) — scATAC-seq dataset of 500 PBMCs from 10x Genomics.
+- [snapatac2.datasets.pbmc5k](#snapatac2.datasets.pbmc5k) — scATAC-seq dataset of 5k PBMCs from 10x Genomics.
+- [snapatac2.datasets.read_motifs](#snapatac2.datasets.read_motifs) — Read motifs from a MEME format file.
+- [snapatac2.datasets.register_datasets](#snapatac2.datasets.register_datasets) — No description available.
+- [snapatac2.datasets.typechecked](#snapatac2.datasets.typechecked) — Instrument the target function to perform run-time type checking.
+- [snapatac2.export.export_coverage](#snapatac2.export.export_coverage) — Export and save coverage in a bedgraph or bigwig format file.
+- [snapatac2.export.export_fragments](#snapatac2.export.export_fragments) — Export and save fragments in a BED format file.
+- [snapatac2.export.get_file_format](#snapatac2.export.get_file_format) — No description available.
+- [snapatac2.genome.register_datasets](#snapatac2.genome.register_datasets) — No description available.
 - [snapatac2.get_write_options](#snapatac2.get_write_options) — Get the current default write configuration.
+- [snapatac2.metrics.frag_size_distr](#snapatac2.metrics.frag_size_distr) — Compute the fragment size distribution of the dataset.
+- [snapatac2.metrics.frip](#snapatac2.metrics.frip) — Add fraction of reads in peaks (FRiP) to the AnnData object.
+- [snapatac2.metrics.summary_by_chrom](#snapatac2.metrics.summary_by_chrom) — Compute the cell level summary statistics by chromosome.
+- [snapatac2.metrics.tsse](#snapatac2.metrics.tsse) — Compute the TSS enrichment score (TSSe) for each cell.
+- [snapatac2.plotting.coverage](#snapatac2.plotting.coverage) — Plot the coverage tracks for different groups of cells. This function requires `matplotlib` to be installed.
+- [snapatac2.plotting.frag_size_distr](#snapatac2.plotting.frag_size_distr) — Plot the fragment size distribution.
+- [snapatac2.plotting.motif_enrichment](#snapatac2.plotting.motif_enrichment) — Plot the motif enrichment result.
+- [snapatac2.plotting.network_scores](#snapatac2.plotting.network_scores) — score_name Name of the edge attribute width The width of the plot height The height of the plot
+- [snapatac2.plotting.regions](#snapatac2.plotting.regions) — Parameters ---------- adata Annotated data matrix. groupby Group the cells into different groups. If a `str`, groups are obtained from `.obs[groupby]`. peaks Peaks of each group. width The width of the plot height The height of the plot show Show the figure interactive Whether to make interactive plot out_file Path of the output file for saving the output image, end with '.svg' or '.pdf' or '.png' or '.html'.
+- [snapatac2.plotting.spectral_eigenvalues](#snapatac2.plotting.spectral_eigenvalues) — Plot the eigenvalues of spectral embedding.
+- [snapatac2.plotting.tsse](#snapatac2.plotting.tsse) — Plot the TSS enrichment vs. number of fragments density figure.
+- [snapatac2.plotting.umap](#snapatac2.plotting.umap) — Plot the UMAP embedding.
+- [snapatac2.preprocessing.add_tile_matrix](#snapatac2.preprocessing.add_tile_matrix) — Generate cell by bin count matrix.
+- [snapatac2.preprocessing.call_cells](#snapatac2.preprocessing.call_cells) — Calling cells based on the number of feature counts.
+- [snapatac2.preprocessing.filter_cells](#snapatac2.preprocessing.filter_cells) — Filter cell outliers based on counts and numbers of genes expressed. For instance, only keep cells with at least `min_counts` counts or `min_tsse` TSS enrichment scores. This is to filter measurement outliers, i.e. "unreliable" observations.
+- [snapatac2.preprocessing.filter_doublets](#snapatac2.preprocessing.filter_doublets) — Remove doublets according to the doublet probability or doublet score.
+- [snapatac2.preprocessing.filter_kwargs](#snapatac2.preprocessing.filter_kwargs) — No description available.
+- [snapatac2.preprocessing.harmony](#snapatac2.preprocessing.harmony) — Use harmonypy to integrate different experiments.
+- [snapatac2.preprocessing.import_contacts](#snapatac2.preprocessing.import_contacts) — Import chromatin contacts.
+- [snapatac2.preprocessing.import_fragments](#snapatac2.preprocessing.import_fragments) — Import data from fragment files and compute basic QC metrics.
+- [snapatac2.preprocessing.import_values](#snapatac2.preprocessing.import_values) — Import values associated with base pairs, typically from experiments like whole-genome bisulfite sequencing (WGBS).
+- [snapatac2.preprocessing.knn](#snapatac2.preprocessing.knn) — Compute a neighborhood graph of observations.
+- [snapatac2.preprocessing.make_fragment_file](#snapatac2.preprocessing.make_fragment_file) — Convert a BAM file to a fragment file.
+- [snapatac2.preprocessing.make_gene_matrix](#snapatac2.preprocessing.make_gene_matrix) — Generate cell by gene activity matrix.
+- [snapatac2.preprocessing.make_peak_matrix](#snapatac2.preprocessing.make_peak_matrix) — Generate cell by peak count matrix.
+- [snapatac2.preprocessing.mnc_correct](#snapatac2.preprocessing.mnc_correct) — A modified MNN-Correct algorithm based on cluster centroid.
+- [snapatac2.preprocessing.recipe_10x_metrics](#snapatac2.preprocessing.recipe_10x_metrics) — Preprocess raw Bam files and generate a set of QC metrics similar to the 10x Genomics pipeline.
+- [snapatac2.preprocessing.scanorama_integrate](#snapatac2.preprocessing.scanorama_integrate) — Use Scanorama [Hie19]_ to integrate different experiments.
+- [snapatac2.preprocessing.scrublet](#snapatac2.preprocessing.scrublet) — Compute probability of being a doublet using the scrublet algorithm.
+- [snapatac2.preprocessing.select_features](#snapatac2.preprocessing.select_features) — Perform feature selection by selecting the most accessibile features across all cells unless `max_iter` > 1.
 - [snapatac2.read](#snapatac2.read) — Read `.h5ad`-formatted hdf5 file.
 - [snapatac2.read_10x_mtx](#snapatac2.read_10x_mtx) — Read 10x-Genomics-formatted mtx directory.
 - [snapatac2.read_dataset](#snapatac2.read_dataset) — Read AnnDataSet object.
 - [snapatac2.read_motifs](#snapatac2.read_motifs) — Read motifs from a MEME format file.
 - [snapatac2.read_mtx](#snapatac2.read_mtx) — Read Matrix Market file.
 - [snapatac2.set_write_options](#snapatac2.set_write_options) — Set the default write configuration for all subsequent write operations.
+- [snapatac2.tools.add_cor_scores](#snapatac2.tools.add_cor_scores) — Compute correlation scores for any two connected nodes in the network.
+- [snapatac2.tools.add_regr_scores](#snapatac2.tools.add_regr_scores) — Perform regression analysis for nodes and their parents in the network.
+- [snapatac2.tools.add_tf_binding](#snapatac2.tools.add_tf_binding) — Add TF motif binding information.
+- [snapatac2.tools.aggregate_X](#snapatac2.tools.aggregate_x) — Aggregate values in adata.X in a row-wise fashion.
+- [snapatac2.tools.aggregate_cells](#snapatac2.tools.aggregate_cells) — Aggregate cells into pseudo-cells.
+- [snapatac2.tools.dbscan](#snapatac2.tools.dbscan) — Cluster cells into subgroups using the DBSCAN algorithm.
+- [snapatac2.tools.diff_test](#snapatac2.tools.diff_test) — Identify differentially accessible regions.
+- [snapatac2.tools.hdbscan](#snapatac2.tools.hdbscan) — Cluster cells into subgroups using the HDBSCAN algorithm.
+- [snapatac2.tools.init_network_from_annotation](#snapatac2.tools.init_network_from_annotation) — Build CRE-gene network from gene annotations.
+- [snapatac2.tools.kmeans](#snapatac2.tools.kmeans) — Cluster cells into subgroups using the K-means algorithm, a classical algorithm in data mining.
+- [snapatac2.tools.leiden](#snapatac2.tools.leiden) — Cluster cells into subgroups [Traag18]_.
+- [snapatac2.tools.leiden_sweep](#snapatac2.tools.leiden_sweep) — Perform a sweep over multiple resolutions for Leiden clustering and compute silhouette scores.
+- [snapatac2.tools.link_tf_to_gene](#snapatac2.tools.link_tf_to_gene) — Contruct a genetic network by linking TFs to target genes.
+- [snapatac2.tools.macs3](#snapatac2.tools.macs3) — Call peaks using MACS3.
+- [snapatac2.tools.marker_regions](#snapatac2.tools.marker_regions) — A quick-and-dirty way to get marker regions.
+- [snapatac2.tools.merge_peaks](#snapatac2.tools.merge_peaks) — Merge peaks from different groups.
+- [snapatac2.tools.motif_enrichment](#snapatac2.tools.motif_enrichment) — Identify enriched transcription factor motifs.
+- [snapatac2.tools.multi_spectral](#snapatac2.tools.multi_spectral) — Compute Laplacian Eigenmaps simultaneously on multiple modalities, with linear space and time complexity.
+- [snapatac2.tools.pagerank](#snapatac2.tools.pagerank) — No description available.
+- [snapatac2.tools.prune_network](#snapatac2.tools.prune_network) — Prune the network.
+- [snapatac2.tools.smooth](#snapatac2.tools.smooth) — Smoothing.
+- [snapatac2.tools.spectral](#snapatac2.tools.spectral) — Perform dimension reduction using Laplacian Eigenmaps.
+- [snapatac2.tools.transfer_labels](#snapatac2.tools.transfer_labels) — Transfer labels.
+- [snapatac2.tools.umap](#snapatac2.tools.umap) — Parameters ---------- adata The annotated data matrix. n_comps The number of dimensions of the embedding. use_dims Use these dimensions in `use_rep`. use_rep Use the indicated representation in `.obsm`. key_added `adata.obs` key under which to add the cluster labels. random_state Random seed. inplace Whether to store the result in the anndata object. **kwargs Other parameters defined in umap.UMAP

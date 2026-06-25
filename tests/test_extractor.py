@@ -28,5 +28,5 @@ def test_extracts_exposed_api_docs_when_functions_omitted():
     docs = extract_api_docs("tests/fixtures")
     names = {doc.qualified_name for doc in docs}
 
-    assert "sample_lib.documented_function" in names
-    assert "sample_lib.undocumented_function" in names
+    assert "fixtures.sample_lib.documented_function" in names
+    assert "fixtures.sample_lib.undocumented_function" in names

@@ -37,12 +37,21 @@ def _build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Skip per-entry body sections; only emit the API reference list.",
     )
+    extract.add_argument(
+        "--include-private-submodules",
+        action="store_true",
+        help="Include submodules whose names start with `_` during auto-discovery.",
+    )
     extract.add_argument("--fail-on-error", action="store_true", help="Exit non-zero if any API cannot be resolved.")
     return parser
 
 
 def _run_extract(args: argparse.Namespace) -> int:
-    docs = extract_api_docs(args.target, args.functions)
+    docs = extract_api_docs(
+        args.target,
+        args.functions,
+        include_private_submodules=args.include_private_submodules,
+    )
     markdown = render_markdown(docs, title=args.title, include_body=not args.no_body)
 
     if args.output:

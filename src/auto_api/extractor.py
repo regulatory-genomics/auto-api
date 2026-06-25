@@ -43,10 +43,16 @@ def extract_resolved_api(resolved: ResolvedApi) -> ApiDoc:
     )
 
 
-def extract_api_docs(target: str, function_names: list[str] | None = None) -> list[ApiDoc]:
+def extract_api_docs(
+    target: str,
+    function_names: list[str] | None = None,
+    include_private_submodules: bool = False,
+) -> list[ApiDoc]:
     if not function_names:
         try:
-            resolved_apis = resolve_exposed_apis(target)
+            resolved_apis = resolve_exposed_apis(
+                target, include_private_submodules=include_private_submodules
+            )
         except Exception as exc:
             return [
                 ApiDoc(

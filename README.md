@@ -67,7 +67,7 @@ Extract all public functions exposed by a target module:
 uv run auto-api extract --target json
 ```
 
-For installed modules, public functions come from `__all__` when present, otherwise from names that do not start with `_`.
+For installed modules, public functions come from `__all__` when present, otherwise from names that do not start with `_`. Auto-discovery recurses into submodules and dedupes re-exports. Submodules whose names start with `_` are skipped by default; pass `--include-private-submodules` to include them.
 
 For local filesystem targets, `auto-api` walks importable modules under the path and extracts their public module-level functions:
 
