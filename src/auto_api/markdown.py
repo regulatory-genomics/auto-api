@@ -20,7 +20,7 @@ def render_markdown(
     for doc in docs:
         anchor = _unique_anchor(_entry_label(doc), seen)
         description = doc.description or "No description available."
-        lines.append(f"- [{_entry_label(doc)}](#{anchor}) — {description}")
+        lines.append(f"- {_entry_label(doc)} — {description}")
     lines.append("")
 
     if not include_body:
