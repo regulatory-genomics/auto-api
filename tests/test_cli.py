@@ -60,7 +60,7 @@ def test_cli_no_body_skips_per_entry_body(tmp_path):
     markdown = output.read_text(encoding="utf-8")
 
     assert exit_code == 0
-    assert "## API reference" in markdown
+    assert "## List of functions" in markdown
     assert "## sample_lib.documented_function" not in markdown
     assert "Source module" not in markdown
 

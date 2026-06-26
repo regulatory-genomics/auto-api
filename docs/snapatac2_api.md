@@ -1,6 +1,6 @@
 # API Documentation
 
-## API reference
+## List of functions
 
 - snapatac2.concat: Concatenates AnnData objects.
 - snapatac2.datasets.Meuleman_2020: A list of transcription factor motifs curated from [Meuleman20]_.

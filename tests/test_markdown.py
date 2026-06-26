@@ -18,7 +18,7 @@ def test_renders_successful_doc():
     )
 
     assert "# JSON APIs" in markdown
-    assert "## API reference" in markdown
+    assert "## List of functions" in markdown
     assert "- json.dumps: Serialize obj." in markdown
     assert "## json.dumps" in markdown
     assert '<a id="json.dumps"></a>' in markdown
@@ -41,7 +41,7 @@ def test_renders_unresolved_doc():
         ]
     )
 
-    assert "## API reference" in markdown
+    assert "## List of functions" in markdown
     assert "- missing: Unresolved: Could not resolve missing." in markdown
     assert "## missing" in markdown
     assert "Status: unresolved" in markdown
@@ -64,7 +64,7 @@ def test_api_reference_only_mode_omits_body():
         include_body=False,
     )
 
-    assert "## API reference" in markdown
+    assert "## List of functions" in markdown
     assert "- json.dumps: Serialize obj." in markdown
     assert "## json.dumps" not in markdown
     assert "Source module" not in markdown

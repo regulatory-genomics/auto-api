@@ -33,7 +33,7 @@ Output structure (body on):
 ```md
 # API Documentation
 
-## API reference
+## List of functions
 
 - json.dumps: Serialize ``obj`` to a JSON formatted ``str``.
 - json.loads: Deserialize ``s`` (a ``str``, ``bytes`` or ``bytearray`` instance containing a JSON document) to a Python object.

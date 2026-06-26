@@ -14,7 +14,7 @@ def render_markdown(
     title: str = "API Documentation",
     include_body: bool = True,
 ) -> str:
-    lines = [f"# {title}", "", "## API reference", ""]
+    lines = [f"# {title}", "", "## List of functions", ""]
 
     seen: set[str] = set()
     for doc in docs:
