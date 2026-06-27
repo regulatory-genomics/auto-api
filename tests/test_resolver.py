@@ -45,6 +45,7 @@ def test_resolves_exposed_functions_from_local_path():
 
     assert "fixtures.sample_lib.documented_function" in names
     assert "fixtures.sample_lib.undocumented_function" in names
+    assert "fixtures.sample_lib.SampleClass" in names
     assert "fixtures.sample_lib._private_function" not in names
 
 

@@ -215,7 +215,7 @@ def _resolve_exposed_apis_from_module(module: ModuleType) -> list[ResolvedApi]:
         except AttributeError:
             continue
 
-        if not _is_exposed_function(obj):
+        if not _is_exposed_api(obj):
             continue
 
         apis.append(
@@ -229,8 +229,8 @@ def _resolve_exposed_apis_from_module(module: ModuleType) -> list[ResolvedApi]:
     return sorted(apis, key=lambda api: api.qualified_name)
 
 
-def _is_exposed_function(obj: object) -> bool:
-    return inspect.isfunction(obj) or inspect.isbuiltin(obj) or inspect.isroutine(obj)
+def _is_exposed_api(obj: object) -> bool:
+    return inspect.isclass(obj) or inspect.isfunction(obj) or inspect.isbuiltin(obj) or inspect.isroutine(obj)
 
 
 def _resolve_dotted_path(path: str) -> tuple[object, str]:

@@ -26,7 +26,8 @@ def test_returns_error_doc_for_unresolved_api():
 
 def test_extracts_exposed_api_docs_when_functions_omitted():
     docs = extract_api_docs("tests/fixtures")
-    names = {doc.qualified_name for doc in docs}
+    docs_by_name = {doc.qualified_name: doc for doc in docs}
 
-    assert "fixtures.sample_lib.documented_function" in names
-    assert "fixtures.sample_lib.undocumented_function" in names
+    assert "fixtures.sample_lib.documented_function" in docs_by_name
+    assert "fixtures.sample_lib.undocumented_function" in docs_by_name
+    assert docs_by_name["fixtures.sample_lib.SampleClass"].docstring == "Represent a documented sample class."

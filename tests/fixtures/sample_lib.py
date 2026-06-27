@@ -12,6 +12,8 @@ def _private_function():
 
 
 class SampleClass:
+    """Represent a documented sample class."""
+
     def method(self, number: int) -> int:
         """Return ``number`` unchanged."""
         return number
